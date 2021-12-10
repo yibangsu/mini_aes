@@ -94,13 +94,10 @@ static void mini_aes_enc_run(uint8_t* a, uint8_t* b,
     e = f = g = h = 0;
 
     /* s-box */
-    uint16_t i;
-    i = (*a) * 27; *a = i % 256;
-    i = (*b) * 27; *b = i % 256;
-    i = (*c) * 27; *c = i % 256;
-    i = (*d) * 27; *d = i % 256;
-    // reset temp
-    i = 0; 
+    *a = ((*a) << 4) + ((*a) << 3) + ((*a) << 1) + (*a);
+    *b = ((*b) << 4) + ((*b) << 3) + ((*b) << 1) + (*b);
+    *c = ((*c) << 4) + ((*c) << 3) + ((*c) << 1) + (*c);
+    *d = ((*d) << 4) + ((*d) << 3) + ((*d) << 1) + (*d);
 }
 
 MINI_AES_ERR_T mini_aes_enc(mini_aes_context *ctx, uint32_t* in, uint32_t* out)
@@ -145,13 +142,10 @@ static void mini_aes_dec_run(uint8_t* a, uint8_t* b,
     uint32_t rk)
 {
     /* s-box */
-    uint16_t i;
-    i = (*a) * 19; *a = i % 256;
-    i = (*b) * 19; *b = i % 256;
-    i = (*c) * 19; *c = i % 256;
-    i = (*d) * 19; *d = i % 256;
-    // reset temp
-    i = 0;
+    *a = ((*a) << 4) + ((*a) << 1) + (*a);
+    *b = ((*b) << 4) + ((*b) << 1) + (*b);
+    *c = ((*c) << 4) + ((*c) << 1) + (*c);
+    *d = ((*d) << 4) + ((*d) << 1) + (*d);
 
     /* mix */
     uint8_t e, f, g, h;
