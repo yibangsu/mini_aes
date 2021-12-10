@@ -1,3 +1,0 @@
-// the configured options and settings
-#define VERSION_MAJOR @mini_aes_VERSION_MAJOR@
-#define VERSION_MINOR @mini_aes_VERSION_MINOR@
