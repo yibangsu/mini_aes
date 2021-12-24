@@ -68,7 +68,7 @@ class MiniAes {
 
     enc(input) {
         if (typeof input !== 'number') {
-            let input = parseInt(input);
+            input = parseInt(input);
         }
 
         let a = (input & 0xFF000000) >> 24;
@@ -119,7 +119,7 @@ class MiniAes {
 
     dec(input) {
         if (typeof input !== 'number') {
-            let input = parseInt(input);
+            input = parseInt(input);
         }
 
         let a = (input & 0xFF000000) >> 24;
